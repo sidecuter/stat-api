@@ -1,8 +1,4 @@
-/venv/
-/**/app.db
-/**/__pycache__/
-/.idea/
-/**/.env
-/.direnv
-/static/
-/db-data/
+.nx/installation
+.nx/cache
+.nx/workspace-data
+node_modules/

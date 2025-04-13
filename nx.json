@@ -1,0 +1,12 @@
+{
+  "installation": {
+    "version": "20.7.2"
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "plugins": [
+  	{
+  	  "plugin": "@nxlv/python"
+  	}
+  ],
+  "defaultBase": "dev"
+}

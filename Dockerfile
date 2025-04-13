@@ -1,9 +1,12 @@
-FROM python:3.12
+FROM alpine:latest
+
+RUN apk add nodejs uv npm python3 bash
 
 WORKDIR /app
 
 COPY . .
 
-RUN python3 -m pip install -r requirements.txt
+RUN npm ci
+RUN ./nx install @polyna-backend/fastapi
 
-CMD ["python3", "main.py"]
+CMD ["./nx", "run-many", "-t", "run"]

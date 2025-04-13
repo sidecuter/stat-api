@@ -1,0 +1,61 @@
+{
+    "name": "@polyna-backend/fastapi",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "packages/fastpapi",
+    "targets": {
+      "lock": {
+        "executor": "@nxlv/python:lock",
+        "options": {
+          "update": false
+        }
+      },
+      "add": {
+        "executor": "@nxlv/python:add",
+        "options": {}
+      },
+      "update": {
+        "executor": "@nxlv/python:update",
+        "options": {}
+      },
+      "remove": {
+        "executor": "@nxlv/python:remove",
+        "options": {}
+      },
+      "test": {
+        "executor": "@nxlv/python:run-commands",
+        "options": {
+          "command": "uv run pytest app/tests/",
+          "cwd": "{projectRoot}"
+        }
+      },
+      "run": {
+        "executor": "@nxlv/python:run-commands",
+        "options": {
+          "command": "uv run main.py",
+          "cwd": "{projectRoot}"
+        }
+      },
+      "install": {
+        "executor": "@nxlv/python:run-commands",
+        "options": {
+          "command": "uv sync",
+          "cwd": "{projectRoot}"
+        }
+      },
+      "migrate-head": {
+        "executor": "@nxlv/python:run-commands",
+        "options": {
+          "command": "uv run alembic upgrade head",
+          "cwd": "{projectRoot}"
+        }
+      }
+    },
+    "tags": [],
+    "release": {
+      "version": {
+        "generator": "@nxlv/python:release-version"
+      }
+    }
+  }
+  

@@ -1,0 +1,7 @@
+/**/app.db
+/**/__pycache__/
+/.idea/
+/**/.env
+/.direnv
+/static/
+/db-data/

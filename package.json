@@ -1,0 +1,9 @@
+{
+  "name": "@polyna-backend/source",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@nxlv/python": "^20.12.5"
+  }
+}

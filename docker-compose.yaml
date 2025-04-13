@@ -1,6 +1,7 @@
 services:
   migrate:
-    image: ghcr.io/sidecuter/statapi:latest
+    build: .
+    # image: ghcr.io/sidecuter/statapi:latest
     depends_on:
       - database
     environment:
@@ -8,7 +9,7 @@ services:
     networks:
       front-tier:
         ipv4_address: 172.16.0.12
-    command: ["alembic", "upgrade", "head"]
+    command: ["./nx", "run", "fastapi:migrate-head"]
   server:
     environment:
       SQLALCHEMY_DATABASE_URL: postgresql+psycopg2://statapi:test@172.16.0.11:5432/statapi
@@ -16,9 +17,11 @@ services:
       ALLOWED_HOSTS: '["http://localhost:3000"]'
       ALLOWED_METHODS: '["GET","PUT","POST"]'
       ADMIN_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
-    image: ghcr.io/sidecuter/statapi:latest
+    # image: ghcr.io/sidecuter/statapi:latest
+    build: .
     ports:
       - "8080:8080"
+      - "3000:3000"
     volumes:
       - ./static:/app/static
     networks:
@@ -34,8 +37,8 @@ services:
       POSTGRES_PASSWORD: "test"
     ports:
       - "5432:5432"
-    volumes:
-      - ./db-data:/var/lib/postgresql/data
+    # volumes:
+    #   - ./db-data:/var/lib/postgresql/data
     networks:
       front-tier:
         ipv4_address: 172.16.0.11
